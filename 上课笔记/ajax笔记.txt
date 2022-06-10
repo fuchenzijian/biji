@@ -1,0 +1,30 @@
+get 和post的区别   
+	1  安全  
+		1 get会暴露用户的隐私信息在地址栏中
+		2 get会有缓存机制  会让下一个人看到敏感信息
+	2  存储大小     get小   post大
+	3  get获取信息  post 提交信息
+
+
+let a = new XMLHttpRequest();
+    a.open('GET', '复制路径即刻', true)
+    a.send();   //向服务器发送
+    a.onreadystatechange = function () {
+        if (a.readyState == 4 && a.status == 200) {
+
+	}
+
+jquery中ajax写法
+	$.ajax({
+		url:'路径',
+		type:'get',
+		dataType:'json',
+		success:function(data){   //成功时执行
+			let a=data;
+		},
+		error:function(jqxhr,textStatus,error){   //失败时执行  一般错误为url写错
+			console.log('失败')
+		}
+})
+
+https://mock.mengxuegu.com/login

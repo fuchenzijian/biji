@@ -1,0 +1,286 @@
+concat 字符串拼接
+	var a="张三";
+	var b="李四";
+	var c=a.concat(b);
+	
+判断是不是数组
+ 	var a=[];
+	Array.isArray(a)  true和false
+	a instanceof Array   true和false
+
+字符串变数组
+	let strArr=[...字符串名];
+	var a=Array.from(属性);
+	var s1 = "helloworld";
+	var ss1 = s1.split(''); 
+
+
+textContent和innerText的区别
+	在于有没有display:none属性
+	textContent会显示display:none的值   会解析格式
+	innerText不会显示display:none的值
+        constructor    构造函数
+
+
+数组去重
+	var a=[1,1,1,2,3,4,2,4,2];
+    	var b=[];
+    	for(var i=0;i<a.length;i++){
+        	if(b.indexOf(a[i])==-1){
+            	b.push(a[i])
+        	}
+    	}
+    	console.log(b)
+	
+	var d=[...new Set(a)]
+	
+
+
+获取实例对象的原型的3种方法
+	obj.__proto__;
+	obj.constructor.prototype;
+	obj.getprototypeof(属性)
+
+
+
+call和apply会改变this的指向
+
+
+
+求出数组中最大的数和次数
+	function find(ar) {
+        let arr = [...ar];   变成数组
+        let tempChar = '';   接数组里面的值
+        let tempNumber = 0;  接数组值出现的次数
+        let maxChar = '';    出现最多的值
+        let maxNumber = 0;   出现最多的值的次数
+        let duixiang = {     对象接出现次数最多的值和次数
+            zuida: '',
+            zuiduo: 0
+        }
+        for (let i = 0; i < arr.length; i++) {
+            tempChar = arr[i];
+            tempNumber = 0;
+            for (let j = 0; j < arr.length; j++) {
+                if (tempChar == arr[j]) {
+                    tempNumber++;
+                }
+            }
+            if (tempNumber > maxNumber) {
+                maxChar = tempChar;
+                maxNumber = tempNumber;
+            }
+        }
+        duixiang['zuida'] = maxChar;
+        duixiang['zuiduo'] = maxNumber
+        return duixiang;
+    }
+
+
+找出最大值
+
+    function find2(a){
+        let b=0;
+        for(var i=0;i<a.length;i++){
+            if(b<a[i]){
+                b = a[i];
+            }
+        }
+        return b;
+    }
+
+
+
+求出数组中最大的数和次数
+
+	function find(stu) {
+        let duixiang = {};
+        for (let i = 0; i < stu.length; i++) {
+            if (duixiang.hasOwnProperty(stu[i])) {
+                duixiang[stu[i]]++;
+            } else {
+                duixiang[stu[i]] = 1;
+            }
+        }
+        let duixiang2 = {
+            char: '',
+            number: 0
+        }
+        for (key in duixiang) {
+            if (duixiang[key] > duixiang2.number) {
+                duixiang2.number = duixiang[key];
+                duixiang2.char = key;
+            }
+        }
+        return duixiang2;
+    }
+
+
+
+获取数组最大的数的最近的重复的数
+	const requestArr =[1,3,5,7,12,18,21,18,12,6,5,4,3,1];
+	let objArr ={};
+	requestArr.forEach((val,index)=>{
+   	if(objArr.hasOwnProperty(val)){
+    		objArr[val]++;
+   	}else{
+       		objArr[val] =1;
+   	}
+
+	})
+	let numMax=0;
+	let numMaxCount =0;
+	for (const key in objArr) {
+    		if(objArr[key]>= numMaxCount){
+        		numMaxCount =objArr[key];
+       			numMax =key;
+    	}
+	}
+	console.log(numMax)
+
+递归求1-100的和
+	function find(a){
+        	if(a==1){return 1}
+        	return find(a-1)+a;
+    	}
+
+递归求1-100的乘
+	function find(a){
+        	if(a==1){return 1}
+        	return find(a-1)*a;
+    	}
+
+获取用户名输出的文字
+	document.getElementById().value;
+
+
+跳转  window.location.href='';
+
+
+把对象变成字符串   JSON.stringify(userinfo);
+把字符串变成对象   JSON.parse(userinfo);
+
+
+prototype   原型
+constructor 构造
+
+构造函数的继承	
+	1 改变this指向
+	var a=function(name,age){
+		this.name=name;
+		this.age=age;
+	}
+	var b=function(name,age,sex){
+		a,call(this,name,age);
+		this.sex=sex;
+	}
+	2 把a和b关联起来，实现继承
+		b.prototype=Object.create(a.prototype); || b.prototype=new a();
+	3  把自身的构造属性指给自身
+		b.prototype.constructor = b;
+
+
+
+Object.getPrototypeOf()    返回对象的原型
+Object.setPrototypeOf()	   写对象的原型
+Object.create()            生成实例对象   
+Object.prototype.isPrototypeOf()    判断对象是否是参数对象的原型
+
+递归算法         自己调自己
+	function find(s){
+		if(s<2){return 1}
+		return find(s-1)+find(s-2)
+	}
+
+
+display:flow-root;   解决边框塌陷  父元素没有宽和高里面的子元素用margin-top是起作用的
+
+document.querySelector('.box');     获取box的class
+document.querySelectorAll('bottom');
+
+
+window.onload;
+
+考试秘籍大法：
+  1.构造函数中写属性    2.prototype中写方法；3.如果一个方法里包含方法，那么就需要提取到prototype中；
+  4. 把赋值的变量变成this;
+
+
+number方法
+	toFixed(1)    截取小数点后一位
+	
+
+字符串方法
+	indexOf()     找下标
+	substr(0,1)   截取下标从0开始到1
+	trim()        去除左右空格
+	chrAt()       根据下标找字符
+	length        长度
+数组方法  
+	sort排序
+	concat  拼接
+	indexof 找下标
+	puch  添加
+	join()  数组变字符串（无参数）
+	pop()  删除数组最后一个元素
+	push()  末尾添加一个元素
+	isarray()  看是否是数组
+	
+		
+Array.from    字符串数组化
+Number.parsefloat()   把字符串变小数
+Number.parseint()     把字符串变成整数
+isnan()               判断传递的参数是否是isnan
+Number.isinteger()    判断传递的参数是否是整数  
+
+
+
+includes(要找的值)    数组中找值  返回true和false
+
+webkit-   代表谷歌浏览器的私有属性
+
+
+js六大基本数据类型    String Number    Boolean Null Undefined   symbol
+		     字符串  浮点数    布尔值  空值  未定义      未知
+
+引用数据类型           Array    Object
+		       数组      对象
+
+
+
+js中代表false的值    undefined      null       0      NAN     ""
+
+
+
+cs div     后代选择器         里面是个div都会加的样式      儿子（儿子里面的div）   孙子   重孙~~~~~   都会加的样式
+.cs>div   子元素选择器      直接关系的div元素会加         儿子     同级的兄弟元素   会加的样式 
+span+p  兄弟元素之间     span相邻的唯一的一个p元素会加的样式    只有后面没有前面
+span~p  兄弟元素之间     span后面的兄弟元素里面的p标签都加的样式
+span,p   相当于标签选择器    简写
+
+
+
+dom     增加
+	var a=document.createElement('div')   创建一个div
+	var b=document.createTextNode('1234') 在新建的div里面写入1234
+	a.appendChild(b)                      
+	
+	var c=document.getElementsByClassName('box') 找到要添加到的div;
+	var d=document.getElementsByClassName('box-1') 找到要添加到的div的具体位置    box-1这个div的底下
+	c.insertBefore(a,d);       c=要添加到的div的位置    a=  要添加的div（span   p标签都可以）   d=具体位置的下边
+
+	删除
+	var a=document.getElementsByClassName('div')[0]    找到要删除的div
+	var b=docuemnt.getElementsByClassName('span')[0];  找到div中的span标签
+	a.removeChild(b);                                  删除div中的span标签
+
+innerHTML和innerText 区别
+	var a=document.createElement('div');    创建一个div
+	a.innerHTML="<div>这是一个div</div>"    输出出来是div里面套了个div
+	a.innerText="<div>这是一个div</div>"	输出结果为div里面输出的是<div>这是一个div</div>   写成了字符串
+
+
+
+parseInt(a)  转换成纯数字
+
+font-weight:700px   子体变粗

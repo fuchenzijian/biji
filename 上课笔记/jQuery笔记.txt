@@ -1,0 +1,54 @@
+$('.box').prepend('<div>111</div>');      添加div  在box的前面   在父元素的里面
+$('.box').append('<div>111</div>');       添加div  在box的后面    在父元素的里面
+$('button').attr('class','wrap-1')        把所有的button按钮换成wrap-1属性
+$('.box').hide();                         隐藏box元素           
+$('.box').show();                         显示box元素
+$('.box').before('<div>1111</div>')       在box属性前加div属性     在父元素外
+$('.box').after('<div>1111</div>')        在box属性前后div属性     在父元素外
+$('.box').remove();                       把自身和自身以内的所有属性都删除
+$('.box').empty();                        把自身以内的所有属性都删除  包括自身文字
+$('.box').slideUp(5000);                  将box属性缓慢移除  间隔为5秒   相当于display:none;
+$('.box').slideDown(5000);                将box属性缓慢出现  间隔为5秒   相当于display:block;
+$('.box').slideToggle();                  将box隐藏显示     初始隐藏则显示   初始显示则隐藏
+$('.box').fadeOut(1000);                  淡出   相当于opacity从0到1; 
+$('.box').fadeIn(1000);                   淡入   相当于opacity从1到0；   
+$('.box').addClass('aaa');                给box属性添加添加一个aaa的属性
+$('.box').removeClass();                  删除里面原有的属性.
+$('div:first').hasClass('box')            判断第一个div元素有没有box属性
+$('.box').removeClass('aa');              把box里面的class属性的aa去掉
+$('.box').removeAttr('class');            删除box属性里面的class    不保存class  直接删除
+$('#aaa').toggleClass('box');             给id为aaa的元素添加或删除class   如果没有则添加，如果有则删除
+$('.aaa').siblings()                      返回被选元素的兄弟元素
+first                                     返回被选元素的首个元素   
+last                                      返回被选元素的最后一个元素    
+eq                                        下标
+$('p').filter('.box')                     class为box的p元素   $('p.box')   两者相同  
+
+
+链式结构    
+parent                                    找父元素  可重复使用      
+parents                                   直接往上找（直接关系）直到找到html想   
+parentsUntil('box')                       一直找直到找到box元素
+children()                                返回被选元素的直接子元素
+$('.box').parent()                        直接父元素
+$('.box').parents()                       所有的祖先元素
+$('.box').parentsuntil('div')             .box和div之间的关于box的祖先元素
+
+
+find('span')                             找到所有的span子元素   
+siblings('')                             返回该属性的兄弟元素
+
+event.stop----  冒泡
+
+
+$(":checkbox").prop("checked");          判断多选框是否是true
+$('.aaa').prop('disabled',ture)          checkbox禁用   默认为false是可选  true为禁选
+
+
+ $(this).find('ul').slideToggle(500);    你要点的里面的ul   如果显示就让消失  如果消失就让显示   500毫秒
+
+
+$('box').on('click',function(){$('.box').append('<div class="aaa"></div>')})
+$('.box').click(function(){$('.box').append('<div class="aaa"></div>')})区别
+
+前者的class值加不进去   后者可以加进去
